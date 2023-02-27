@@ -1,14 +1,15 @@
 import java.util.Scanner;
 
 /**
-* This program receives the mass from the user.
-* From information given, it calculates how much energy,
-* a specific mass would produce.
+* This program receives user guess from user.
+* From information given, it checks to see if guess
+* is the same as random number generated.
+*
 *
 * @author  Sarah Andrew
 * @version 1.0
 *
-* @since   2023-02-16
+* @since   2023-02-26.
 */
 
 public final class DiceGame {
@@ -33,11 +34,10 @@ public final class DiceGame {
         // Declare variable & initialize counter.
         int counter = 0;
         int userGuess = 0;
-        
-        // Generate random number in set range. 
         final int MAX_NUM = 6;
         final int MIN_NUM = 1;
 
+        // Generates number in set range.
         final int randNum = (int) (Math.random() * (MAX_NUM - MIN_NUM + 1)
                                                     + MIN_NUM);
 
@@ -60,7 +60,7 @@ public final class DiceGame {
                 } else {
                     // Increments counter.
                     counter = counter + 1;
-                    // If statement to see if user guess exceeds 
+                    // If statement to see if user guess exceeds
                     // or is lower than random number generated.
                     if (userGuess > randNum) {
                         System.out.println("Your guess is too high.");
@@ -69,8 +69,11 @@ public final class DiceGame {
                         System.out.println("Your guess is too low!");
                         System.out.println();
                     } else {
+                        // Displays user when guess is correct &
+                        // how many tries.
                         System.out.print("Your guess was correct!");
-                        System.out.println(" It took you " + counter + " tries.");
+                        System.out.println(" It took you " + counter
+                            + " tries.");
                     }
                 }
             } catch (NumberFormatException error) {

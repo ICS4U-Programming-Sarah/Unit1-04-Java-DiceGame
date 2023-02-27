@@ -54,8 +54,9 @@ public final class DiceGame {
             try {
                 userGuess = Integer.parseInt(userGuessStr);
                 // If statement to determine if number is in range.
-                if (userGuess >= MIN_NUM && userGuess <= MAX_NUM) {
-                    System.out.println("Please enter number in range.");
+                if (userGuess < MIN_NUM || userGuess > MAX_NUM) {
+                    System.out.print("Please enter number in range.");
+                    System.out.println(" This guess does not count.");
                 } else {
                     // Increments counter.
                     counter = counter + 1;
@@ -64,9 +65,12 @@ public final class DiceGame {
                     if (userGuess > randNum) {
                         System.out.println("Your guess is too high.");
                         System.out.println();
-                    } else {
+                    } else if (userGuess < randNum) {
                         System.out.println("Your guess is too low!");
                         System.out.println();
+                    } else {
+                        System.out.print("Your guess was correct!");
+                        System.out.println(" It took you " + counter + " tries.");
                     }
                 }
             } catch (NumberFormatException error) {
@@ -76,11 +80,7 @@ public final class DiceGame {
             }
         // This case executes when the user gets the
         // number correct.
-        } while (userGuess != randNum); {
-            // Displays results to user.
-            System.out.print("Your guess was correct!");
-            System.out.println("It took you " + counter + " tries");
-        }
+        } while (userGuess != randNum);
         // Closes scanner
         scanner.close();
 
